@@ -47,13 +47,28 @@ public class D7ProductOfArrayExceptItself {
             temp *= j;
         }
         for (int i = 0; i < n; i++) {
+            if(arr[i] == 0) {
+                ans[i] = productOfElementsExceptZero(arr, i);
+                continue;
+            }
             ans[i] = temp / arr[i];
         }
         return ans;
     }
 
+    //method to cater for elements 0
+    static int productOfElementsExceptZero(int[] arr, int index) {
+        arr[index] = 1;
+        int multiplier = 1;
+        for (int i = index; i < arr.length; i++) {
+            multiplier *= arr[i];
+        }
+        arr[index] = 0;
+        return multiplier;
+    }
+
     public static void main(String[] args) {
-        int [] arr = {1, 2, 3, 4};
+        int [] arr = {-1,1,0,-3,3};
 //        int [] ans = bruteForce(arr);
 //        System.out.println(Arrays.toString(ans));
         System.out.println(Arrays.toString(productExceptItself(arr)));
