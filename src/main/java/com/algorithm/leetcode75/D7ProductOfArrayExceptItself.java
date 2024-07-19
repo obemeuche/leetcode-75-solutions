@@ -38,9 +38,24 @@ public class D7ProductOfArrayExceptItself {
         return ans;
     }
 
+    //doesn't cater for 0 as we can't perform a division by 0
+    static int [] productExceptItself(int[] arr) {
+        int n = arr.length;
+        int [] ans = new int[n];
+        int temp = 1;
+        for (int j : arr) {
+            temp *= j;
+        }
+        for (int i = 0; i < n; i++) {
+            ans[i] = temp / arr[i];
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         int [] arr = {1, 2, 3, 4};
-        int [] ans = bruteForce(arr);
-        System.out.println(Arrays.toString(ans));
+//        int [] ans = bruteForce(arr);
+//        System.out.println(Arrays.toString(ans));
+        System.out.println(Arrays.toString(productExceptItself(arr)));
     }
 }
