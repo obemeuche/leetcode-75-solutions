@@ -37,7 +37,7 @@ public class D10MoveZeroes {
                 nonZero++;
             }
         }
-        //fill up with 0
+        //fill up the rest indexes with 0
         for (int i = nonZero; i < n; i++) {
             nums[i] = 0;
         }
