@@ -1,6 +1,8 @@
 package com.algorithm.leetcode75;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class D9StringCompression {
     /*
