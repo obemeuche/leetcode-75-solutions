@@ -1,5 +1,6 @@
 package com.algorithm.leetcode75;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AFewPracticeAlgo {
@@ -88,12 +89,63 @@ public class AFewPracticeAlgo {
         return true;
     }
 
+    static boolean isArmStrong(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input Number: ");
+        int num = scanner.nextInt();
+        int originalNum = num;
+
+        int sum = 0;
+
+        while(num > 0){
+            int rem = num % 10;
+            sum += (rem * rem * rem);
+            num /= 10;
+        }
+        System.out.println("sum: " + sum);
+        return sum == originalNum;
+    }
+
+    //reversing an array by creating a new array object
+    static void reverseArray(int [] array){
+        int startIndex = 0;
+        int [] newArray = new int[array.length];
+        for(int i = array.length-1; i >= 0; i--){
+            newArray[startIndex] = array[i];
+            startIndex++;
+        }
+
+        System.out.println(Arrays.toString(newArray));
+    }
+
+    //reversing an array using same array by swapping elements using 2 pointers.
+    static void reverseArr(int [] arr){
+        int startIndex = 0;
+        int endIndex = arr.length - 1;
+
+        while(startIndex < endIndex){
+            int temp = arr[startIndex];
+            arr[startIndex] = arr[endIndex];
+            arr[endIndex] = temp;
+            startIndex++;
+            endIndex--;
+        }
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+
 
     public static void main(String[] args) {
 //        fibonnacci();
 //        countNumOccurrence();
 //        reverseNum();
-        boolean ans = isPrimeNumberOptimized();
-        System.out.println(ans);
+//        boolean ans = isPrimeNumberOptimized();
+//        boolean ans = isArmStrong();
+//        System.out.println(ans);
+
+        int [] a ={2,3,4,5,6,9};
+//        reverseArray(a);
+        reverseArr(a);
     }
 }
