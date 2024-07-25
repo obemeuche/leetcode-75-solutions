@@ -56,10 +56,29 @@ public class AFewPracticeAlgo {
         System.out.println("New num: " + newNumber);
     }
 
+    static boolean isPrimeNumber(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input number: ");
+        int num = scanner.nextInt();
+
+        if (num <= 1) return false;
+
+        int c = 2;
+        while(c < num){
+            if (num % c == 0){
+                return false;
+            }
+            c++;
+        }
+        return true;
+    }
+
 
     public static void main(String[] args) {
 //        fibonnacci();
 //        countNumOccurrence();
-        reverseNum();
+//        reverseNum();
+        boolean ans = isPrimeNumber();
+        System.out.println(ans);
     }
 }
