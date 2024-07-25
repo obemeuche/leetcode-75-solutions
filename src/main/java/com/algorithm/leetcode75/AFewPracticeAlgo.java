@@ -134,6 +134,23 @@ public class AFewPracticeAlgo {
         System.out.println(Arrays.toString(arr));
     }
 
+    //reversing a string by converting to a char array and using 2 pointers to swap characters
+    static void reverseString(String s){
+        char [] sArray = s.toCharArray();
+        int startIndex = 0;
+        int endIndex = sArray.length - 1;
+
+        while(startIndex < endIndex){
+            char temp = sArray[startIndex];
+            sArray[startIndex] = sArray[endIndex];
+            sArray[endIndex] = temp;
+            startIndex++;
+            endIndex--;
+        }
+
+        System.out.println(new String(sArray));
+    }
+
 
 
     public static void main(String[] args) {
@@ -144,8 +161,11 @@ public class AFewPracticeAlgo {
 //        boolean ans = isArmStrong();
 //        System.out.println(ans);
 
-        int [] a ={2,3,4,5,6,9};
+//        int [] a ={2,3,4,5,6,9};
 //        reverseArray(a);
-        reverseArr(a);
+//        reverseArr(a);
+
+        String name = "Uchechi Obeme";
+        reverseString(name);
     }
 }
