@@ -57,6 +57,7 @@ public class AFewPracticeAlgo {
     }
 
     static boolean isPrimeNumber(){
+        // note: prime numbers are numbers divisible by 1 and itself only without a remainder
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input number: ");
         int num = scanner.nextInt();
@@ -73,12 +74,26 @@ public class AFewPracticeAlgo {
         return true;
     }
 
+    static boolean isPrimeNumberOptimized(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input number: ");
+        int num = scanner.nextInt();
+
+        if(num <= 1) return false;
+        int c = 2;
+        while (c * c < num){
+            if(num % c == 0) return false;
+            c++;
+        }
+        return true;
+    }
+
 
     public static void main(String[] args) {
 //        fibonnacci();
 //        countNumOccurrence();
 //        reverseNum();
-        boolean ans = isPrimeNumber();
+        boolean ans = isPrimeNumberOptimized();
         System.out.println(ans);
     }
 }
