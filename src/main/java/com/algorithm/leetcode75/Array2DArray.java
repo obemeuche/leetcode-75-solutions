@@ -20,6 +20,13 @@ public class Array2DArray {
     }
 
     static int [] findTarget (int [][] arr, int target){
+        /*
+           --> col
+     row   1    2   3
+      |    3    4   5
+           6    7   8
+        */
+
         for(int row = 0; row < arr.length; row++){
             for(int col = 0; col < arr[row].length; col++){
                 if(arr[row][col] == target){
