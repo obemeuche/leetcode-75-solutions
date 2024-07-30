@@ -46,13 +46,13 @@ public class ReshapeTheMatrix {
                 }
             }
         }
-        System.out.println(Arrays.deepToString(reshaped));
+//        System.out.println(Arrays.deepToString(reshaped));
         return reshaped;
 
     }
 
     public static void main(String[] args) {
         int [][] arr = {{1,2},{3,4}}; int r = 1; int c = 4;
-        matrixReshape(arr, r, c);
+        System.out.println(Arrays.deepToString(matrixReshape(arr, r, c)));
     }
 }
