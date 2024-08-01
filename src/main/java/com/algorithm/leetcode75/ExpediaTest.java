@@ -25,12 +25,19 @@ public class ExpediaTest {
             }
         }
 
-        int count = 0;
+        List<String> list = new ArrayList<>();
+        int temp1 = 0;
+//        int temp2 = 0;
         for(Map.Entry<String, Integer> entry : map.entrySet()){
-            var tempVal = entry.getValue();
+            var value = entry.getValue();
+            if(value > temp1){
+                temp1 = value;
+                list.add(0, entry.getKey());
+            }
+            System.out.println(list);
         }
         System.out.println(map);
-        return new ArrayList<>(map.keySet());
+        return list.subList(0, k);
     }
 
     public static void main(String[] args) {
