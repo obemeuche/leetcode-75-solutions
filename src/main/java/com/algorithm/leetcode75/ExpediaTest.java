@@ -63,7 +63,6 @@ public class ExpediaTest {
         for(int i = 0; i < sortedList.subList(0,k).size(); i++){
             result[i] = sortedList.get(i);
         }
-
         return result;
 
     }
