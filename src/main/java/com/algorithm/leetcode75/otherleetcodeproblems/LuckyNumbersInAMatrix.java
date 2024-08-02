@@ -1,6 +1,5 @@
-package com.algorithm.leetcode75;
+package com.algorithm.leetcode75.otherleetcodeproblems;
 
-import javax.swing.plaf.synth.ColorType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

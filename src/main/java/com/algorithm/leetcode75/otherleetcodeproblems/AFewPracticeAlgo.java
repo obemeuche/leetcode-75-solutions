@@ -1,4 +1,4 @@
-package com.algorithm.leetcode75;
+package com.algorithm.leetcode75.otherleetcodeproblems;
 
 import java.util.Arrays;
 import java.util.Scanner;

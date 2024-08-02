@@ -1,4 +1,4 @@
-package com.algorithm.leetcode75;
+package com.algorithm.leetcode75.interviews;
 
 import java.util.HashMap;
 import java.util.Map;
