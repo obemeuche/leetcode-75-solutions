@@ -24,8 +24,14 @@ public class D16MaxNoOfVowelInASubstringOfGivenLength {
         Explanation: "lee", "eet" and "ode" contain 2 vowels.
      */
     static int maxVowels(String s, int k) {
-        //s = "abciiidef", k = 3
-        //Output: 3
+        //create a boolean method that returns true is it is a vowel or else false
+        //using sliding window approach, iterate through the length k and get the count of all vowel characters.
+        //create a maxVowelCount variable that keeps track of the max vowel count seen.
+        //create a pointer variable 0 to keep track of the start of the window
+        //iterate the string starting from index k
+        //if vowel is seen increase count
+        //if vowel is seen using the pointer index, reduce count
+        //increase the pointer variable
         int count = 0;
         int maxVowelCount = Integer.MIN_VALUE;
         for (int i = 0; i < k; i++) {
