@@ -36,11 +36,11 @@ public class D15MaximumAverageSubarray {
             maxAvg = Math.max(maxAvg, sum/k);
             starter++;
         }
-
         return maxAvg;
     }
 
     public static void main(String[] args) {
-
+        int [] array = {1,12,-5,-6,50,3}; int k = 4;
+        System.out.println(findMaximumAverageSubarray(array, k));
     }
 }
