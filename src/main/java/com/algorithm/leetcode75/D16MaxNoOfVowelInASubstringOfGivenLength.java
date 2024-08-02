@@ -23,11 +23,40 @@ public class D16MaxNoOfVowelInASubstringOfGivenLength {
         Output: 2
         Explanation: "lee", "eet" and "ode" contain 2 vowels.
      */
-    public int maxVowels(String s, int k) {
+    static int maxVowels(String s, int k) {
         //s = "abciiidef", k = 3
         //Output: 3
         int count = 0;
-
+        int maxVowelCount = Integer.MIN_VALUE;
+        for (int i = 0; i < k; i++) {
+            if (isVowel(s.charAt(i))) {
+                count++;
+            }
+        }
+        maxVowelCount = Math.max(maxVowelCount, count);
+        int pointer = 0;
+        for (int i = k; i < s.length(); i++) {
+            if (isVowel(s.charAt(i))) {
+                count++;
+            }
+            if (isVowel(s.charAt(pointer))) {
+                count--;
+                pointer++;
+            }
+            maxVowelCount = Math.max(maxVowelCount, count);
+        }
         return count;
+    }
+
+    static boolean isVowel(char s){
+        return switch (s) {
+            case 'a', 'e', 'i', 'o', 'u' -> true;
+            default -> false;
+        };
+    }
+
+    public static void main(String[] args) {
+        String s = "abciiidef"; int k = 3;
+        System.out.println(maxVowels(s,3));
     }
 }
