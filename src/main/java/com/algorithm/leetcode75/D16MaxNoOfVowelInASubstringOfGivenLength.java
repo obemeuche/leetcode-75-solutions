@@ -41,11 +41,11 @@ public class D16MaxNoOfVowelInASubstringOfGivenLength {
             }
             if (isVowel(s.charAt(pointer))) {
                 count--;
-                pointer++;
             }
+            pointer++;
             maxVowelCount = Math.max(maxVowelCount, count);
         }
-        return count;
+        return maxVowelCount;
     }
 
     static boolean isVowel(char s){
