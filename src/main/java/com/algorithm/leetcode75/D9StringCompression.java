@@ -44,8 +44,6 @@ public class D9StringCompression {
         //iterate through the array picking the fist char
         //create a second loop
 
-        Arrays.sort(chars);
-
         int currentPosition = 0;
 
         for(int i = 0; i < chars.length; i++){
@@ -66,8 +64,8 @@ public class D9StringCompression {
                     currentPosition++;
                 }
             }
+            i--;
         }
-
         return currentPosition;
 
     }
@@ -76,5 +74,6 @@ public class D9StringCompression {
         char [] ch = {'a','b','b','b','b','b','b','b','b','b','b','b','b'};
         System.out.println(compress(ch));
     }
+
 
 }
