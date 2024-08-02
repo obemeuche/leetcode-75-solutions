@@ -1,4 +1,4 @@
-package com.algorithm.leetcode75.otherleetcodeproblems;
+package com.algorithm.leetcode75;
 
 public class D15MaximumAverageSubarray {
     /*
