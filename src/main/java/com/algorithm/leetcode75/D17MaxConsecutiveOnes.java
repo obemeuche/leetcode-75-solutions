@@ -2,6 +2,8 @@ package com.algorithm.leetcode75;
 
 public class D17MaxConsecutiveOnes {
     /*
+        https://leetcode.com/problems/max-consecutive-ones-iii/?envType=study-plan-v2&envId=leetcode-75
+
         Given a binary array nums and an integer k, return the maximum number of
         consecutive 1's in the array if you can flip at most k 0's.
 
@@ -20,7 +22,7 @@ public class D17MaxConsecutiveOnes {
 
     static int longestOnes(int[] nums, int k) {
         int maxOneCount = Integer.MIN_VALUE;
-        int count = 1;
+        int count = 0;
 
         //Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
         //Output: 6
@@ -33,14 +35,24 @@ public class D17MaxConsecutiveOnes {
                 if (nums[j] == currentVal) {
                     count++;
                 }
-                if (tracker <= k) {
+                if (tracker <= k){
                     if (nums[j] == 0) {
-                        nums[j] = currentVal;
                         tracker++;
                         count++;
+                    }else{
+                        tracker++;
+//                        continue;
                     }
                 }
-                break;
+//                if (nums[j] == 0 && tracker <= k) {
+//                    tracker++;
+//                    count++;
+//                }
+                if (tracker > k) {
+                    tracker = 0;
+                    count = 0;
+                    break;
+                }
             }
             maxOneCount = Math.max(maxOneCount, count);
         }
@@ -48,7 +60,8 @@ public class D17MaxConsecutiveOnes {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,1,1,0,0,0,1,1,1,1,0}; int k = 2;
+        int[] nums = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
+        int k = 2;
         System.out.println(longestOnes(nums, k));
     }
 }
