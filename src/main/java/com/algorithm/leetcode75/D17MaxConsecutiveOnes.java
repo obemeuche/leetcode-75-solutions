@@ -19,8 +19,36 @@ public class D17MaxConsecutiveOnes {
      */
 
     static int longestOnes(int[] nums, int k) {
-        int maxOneCount = 0;
+        int maxOneCount = Integer.MIN_VALUE;
+        int count = 1;
 
+        //Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+        //Output: 6
+        //Explanation: [1,1,1,0,0,1,1,1,1,1,1]
+
+        int tracker = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int currentVal = nums[i];
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] == currentVal) {
+                    count++;
+                }
+                if (tracker <= k) {
+                    if (nums[j] == 0) {
+                        nums[j] = currentVal;
+                        tracker++;
+                        count++;
+                    }
+                }
+                break;
+            }
+            maxOneCount = Math.max(maxOneCount, count);
+        }
         return maxOneCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1,1,1,0,0,0,1,1,1,1,0}; int k = 2;
+        System.out.println(longestOnes(nums, k));
     }
 }
