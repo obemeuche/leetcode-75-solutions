@@ -66,14 +66,14 @@ public class D9StringCompression {
             }
             i--;
         }
+        System.out.println(chars);
         return currentPosition;
 
     }
 
     public static void main(String[] args) {
-        char [] ch = {'a','b','b','b','b','b','b','b','b','b','b','b','b'};
+        char [] ch = {'a','a','b','b','c','c','c'};
         System.out.println(compress(ch));
     }
-
 
 }
