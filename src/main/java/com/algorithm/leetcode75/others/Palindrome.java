@@ -2,8 +2,8 @@ package com.algorithm.leetcode75.others;
 
 public class Palindrome {
     public static void main(String[] args) {
-        String s = "abcqba";
-        System.out.println(isPalindrome2(s));
+        String s = "abccba";
+        System.out.println(isPalindrome3(s));
     }
 
     static boolean isPalindrome(String s) {
@@ -29,5 +29,14 @@ public class Palindrome {
         }
 
         return true;
+    }
+
+    static boolean isPalindrome3(String s) {
+        if (s == null || s.isEmpty()) return false;
+
+        //using string builder
+        StringBuilder sb = new StringBuilder(s);
+        sb.reverse();
+        return sb.toString().equals(s);
     }
 }
