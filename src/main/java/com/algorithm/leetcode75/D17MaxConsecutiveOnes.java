@@ -24,10 +24,6 @@ public class D17MaxConsecutiveOnes {
         int maxOneCount = Integer.MIN_VALUE;
         int count = 0;
 
-        //Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
-        //Output: 6
-        //Explanation: [1,1,1,0,0,1,1,1,1,1,1]
-
         int tracker = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) {
@@ -57,6 +53,10 @@ public class D17MaxConsecutiveOnes {
 
     static int longestOnes_Optimized(int[] nums, int k) {
         //this approach uses sliding window
+
+        //Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+        //Output: 6
+        //Explanation: [1,1,1,0,0,1,1,1,1,1,1]
         int i = 0;
         int j = 0;
         while (i < nums.length) {
