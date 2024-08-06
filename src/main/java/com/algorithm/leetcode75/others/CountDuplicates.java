@@ -1,5 +1,8 @@
 package com.algorithm.leetcode75.others;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CountDuplicates {
     /*
         https://www.codewars.com/kata/54bf1c2cd5b56cc47f0007a1/java
@@ -19,13 +22,32 @@ public class CountDuplicates {
         "ABBA" -> 2 # 'A' and 'B' each occur twice
      */
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
+        System.out.println(countDuplicates("Indivisibilities"));
     }
 
-    static int countDuplicates(String words) {
+    static int countDuplicates(String words)
+    {
+        Map<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < words.length(); i++) {
+            char c = Character.toLowerCase(words.charAt(i));
+            if (map.containsKey(c)) {
+                map.put(c, map.get(c) + 1);
+            }else {
+                map.put(c, 1);
+            }
+        }
         int count = 0;
 
+        for(int value: map.values()) {
+            if(value > 1) {
+                count++;
+            }
+        }
+
+        System.out.println(map);
         return count;
     }
 }
