@@ -14,7 +14,7 @@ public class HumanReadableTime {
      */
 
     public static void main(String[] args) {
-        System.out.println(readableTime(51789));
+        System.out.println(readableTime2(51789));
     }
 
     static String readableTime(int seconds){
@@ -24,23 +24,33 @@ public class HumanReadableTime {
         //check the hours
         int hours = seconds / 3600;
 
-//        if(hours < 10) {
-//            hours = Integer.parseInt("0" + hours);
-//        }
-        //get the remaining minutes
         seconds -= hours * 3600;
         int minutes = seconds / 60;
-//        if(minutes < 10) {
-//            minutes = Integer.parseInt("0" + minutes);
-//        }
-        //check for seconds
+
         seconds -= minutes * 60;
-        int second = seconds;
-//        if(second < 10) {
-//            second = Integer.parseInt("0" + second);
-//            System.out.println(second);
-//        }
-        return String.format("%02d:%02d:%02d", hours, minutes, second);
-//        return hours + ":" + minutes + ":" + second;
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+    static String readableTime2(int seconds){
+        if(seconds < 0 || seconds > 359999) return null;
+
+        if(seconds == 0) return "00:00:00";
+        //check the hours
+        int hours = seconds / 3600;
+        seconds -= hours * 3600;
+        int minutes = seconds / 60;
+        seconds -= minutes * 60;
+
+        String hh = String.valueOf(hours);
+        String mm = String.valueOf(minutes);
+        String ss = String.valueOf(seconds);
+
+        if(hh.length() == 1) hh = "0" + hh;
+        if(mm.length() == 1) mm = "0" + mm;
+        if(ss.length() == 1) ss = "0" + ss;
+
+        return hh + ":" + mm + ":" + ss;
+
     }
 }
