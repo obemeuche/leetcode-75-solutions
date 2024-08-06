@@ -24,10 +24,11 @@ public class RippleTest {
      */
 
     public static void main(String[] args) {
-
+        int [][] intervals = {{1,3},{2,6},{8,10},{15,18}};
+        System.out.println(Arrays.deepToString(merge(intervals)));
     }
 
-    public int[][] merge(int[][] intervals) {
+    static int[][] merge(int[][] intervals) {
 
         int [] prev = intervals[0];
         //create a list or int array variable to store merged arrays
