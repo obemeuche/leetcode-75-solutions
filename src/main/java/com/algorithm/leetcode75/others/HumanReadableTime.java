@@ -24,22 +24,23 @@ public class HumanReadableTime {
         //check the hours
         int hours = seconds / 3600;
 
-        if(hours < 10) {
-            hours = Integer.parseInt("0" + hours);
-        }
+//        if(hours < 10) {
+//            hours = Integer.parseInt("0" + hours);
+//        }
         //get the remaining minutes
         seconds -= hours * 3600;
         int minutes = seconds / 60;
-        if(minutes < 10) {
-            minutes = Integer.parseInt("0" + minutes);
-        }
+//        if(minutes < 10) {
+//            minutes = Integer.parseInt("0" + minutes);
+//        }
         //check for seconds
         seconds -= minutes * 60;
         int second = seconds;
-        if(second < 10) {
-            second = Integer.parseInt("0" + second);
-            System.out.println(second);
-        }
-        return hours + ":" + minutes + ":" + second;
+//        if(second < 10) {
+//            second = Integer.parseInt("0" + second);
+//            System.out.println(second);
+//        }
+        return String.format("%02d:%02d:%02d", hours, minutes, second);
+//        return hours + ":" + minutes + ":" + second;
     }
 }
