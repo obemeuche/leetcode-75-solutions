@@ -24,7 +24,7 @@ public class CountDuplicates {
 
     public static void main(String[] args)
     {
-        System.out.println(countDuplicates("Indivisibilities"));
+        System.out.println(countDuplicates("aA11"));
     }
 
     static int countDuplicates(String words)
@@ -41,7 +41,8 @@ public class CountDuplicates {
         }
         int count = 0;
 
-        for(int value: map.values()) {
+        for(int value: map.values())
+        {
             if(value > 1) {
                 count++;
             }
