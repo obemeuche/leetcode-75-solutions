@@ -4,10 +4,14 @@ import java.util.Arrays;
 
 public class ApexonTest {
     public static void main(String[] args) {
+//        int [] coins = {1,5,10,25}; int amount = 55;
+//        System.out.println(minCoins(coins, amount));
 
+        String word = "AABBBCCCD";
+        System.out.println(compress(word));
     }
 
-    static int minCoins(int coins[], int V) {
+    static int minCoins(int[] coins, int V) {
         /*
             You are given coins of different denominations and a total amount of money.
             Write a function to compute the fewest number of coins that you need to make up
@@ -18,7 +22,7 @@ public class ApexonTest {
             of 3 coins, 5 (1x) and 25 (2x).
         */
 
-        // Your code here
+        // sort the coins array
         Arrays.sort(coins);
         int minCount = 0;
         for(int i = coins.length -1; i >= 0;){
@@ -46,27 +50,26 @@ public class ApexonTest {
             Sample Output: A2B1A1 A1B1C1D1E1 K5
          */
 
-        // Your code here
-        if(str.length() == 0) return "";
+        //check if string is empty
+        if(str.isEmpty()) return "";
 
-        //AABCA:
-        //A2B1C1A1
-        //AABBBCCCD
         int count = 0;
-        int currentPosition = 0;
+        StringBuilder sb = new StringBuilder();
+
         char [] charArray = str.toCharArray();
         char currentCharacter = charArray[0];
         for(int i = 0; i < charArray.length;){
-            char letter = charArray[0];
-            if(currentCharacter == letter){
+            char c = charArray[i];
+            if (currentCharacter != c) {
+                sb.append(currentCharacter).append(count);
+                count = 0;
+                currentCharacter = c;
+            }else {
                 count++;
-
-            }else{
                 i++;
             }
-
-
         }
-        return "";
+        sb.append(currentCharacter).append(count);
+        return sb.toString();
     }
 }
