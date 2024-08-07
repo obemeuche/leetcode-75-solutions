@@ -2,6 +2,7 @@ package com.algorithm.leetcode75.interviews;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class RippleTest {
@@ -24,12 +25,15 @@ public class RippleTest {
      */
 
     public static void main(String[] args) {
-        int [][] intervals = {{1,3},{2,6},{8,10},{15,18}};
+        int [][] intervals = {{1,3},{8,10},{15,18},{2,6}};
+//        int [][] intervals = {{1,3},{2,6},{8,10},{15,18}};
         System.out.println(Arrays.deepToString(merge(intervals)));
     }
 
     static int[][] merge(int[][] intervals) {
-
+        //sort the 2D array
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        System.out.println("sorted array: " + Arrays.deepToString(intervals));
         int [] prev = intervals[0];
         //create a list or int array variable to store merged arrays
         List<int[]> merged = new ArrayList<>();
