@@ -1,5 +1,7 @@
 package com.algorithm.leetcode75.others;
 
+import java.util.Arrays;
+
 public class EqualSidesOfAnArray {
     /*
         https://www.codewars.com/kata/5679aa472b8f57fb8c000047
@@ -43,6 +45,22 @@ public class EqualSidesOfAnArray {
      */
 
     public static void main(String[] args) {
+        int[] arr = {1,100,50,-51,1,1};
+        System.out.println(equalSidesOfAnArray(arr));
+    }
 
+    static int equalSidesOfAnArray(int[] nums) {
+        if (nums.length == 0) return 0;
+
+        //using 2 pointers
+        int leftSide = 0;
+        int rightSide = Arrays.stream(nums).sum(); // summing all elements in the array
+
+        for (int i = 0; i < nums.length; i++) {
+            rightSide -= nums[i]; //subtract the first element from the rightSide(sum)
+            if (leftSide == rightSide) return i;
+            leftSide += nums[i]; // add the element to the leftSide
+        }
+        return -1;
     }
 }
