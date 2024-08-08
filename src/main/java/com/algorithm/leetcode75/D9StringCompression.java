@@ -71,9 +71,35 @@ public class D9StringCompression {
 
     }
 
+    static int compress2(char[] chars) {
+        int count = 0;
+        StringBuilder sb = new StringBuilder();
+        char letter = chars[0];
+        for(int i = 0; i < chars.length;){
+            if(letter != chars[i]){
+                if(count > 1) {
+                    sb.append(letter).append(count);
+                }else {
+                    sb.append(letter);
+                }
+                count = 0;
+                letter = chars[i];
+            }else {
+                count++;
+                i++;
+            }
+        }
+
+        sb.append(letter).append(count);
+        System.out.println("sb: " + sb);
+        return sb.toString().length();
+    }
+
     public static void main(String[] args) {
-        char [] ch = {'a','a','b','b','c','c','c'};
-        System.out.println(compress(ch));
+//        char [] ch = {'a','a','b','b','c','c','c'};
+        char [] ch = {'a','b','b','b','b','b','b','b','b','b','b','b','b'};
+//        System.out.println(compress(ch));
+        System.out.println(compress2(ch));
     }
 
 }
