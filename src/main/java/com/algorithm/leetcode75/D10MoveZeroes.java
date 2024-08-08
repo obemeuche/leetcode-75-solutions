@@ -45,8 +45,23 @@ public class D10MoveZeroes {
         System.out.println(Arrays.toString(nums));
     }
 
+    static void moveZeroes_Optimized(int[] nums) {
+        int n = nums.length;
+        int nonZero = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != 0) {
+                int temp = nums[i];
+                nums[i] = nums[nonZero];
+                nums[nonZero] = temp;
+                nonZero++;
+            }
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+
     public static void main(String[] args) {
         int[] nums = {0, 1, 0, 3, 12};
-        moveZeroes(nums);
+//        moveZeroes(nums);
+        moveZeroes_Optimized(nums);
     }
 }
