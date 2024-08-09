@@ -20,43 +20,34 @@ public class D17MaxConsecutiveOnes {
         Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
      */
 
-    static int longestOnes(int[] nums, int k) {
-        int maxOneCount = Integer.MIN_VALUE;
+    static int longestOnes(int[] nums, int k)
+    {
+        int max = Integer.MIN_VALUE;
         int count = 0;
-
-        int tracker = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0) {
-                 tracker++;
-//                 count++;
-            }
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[j] == 1)
-                {
+        int temp = k;
+        for(int i = 0; i < nums.length; i++){
+            for(int j = i; j < nums.length; j++){
+                if(nums[j] == 1){
                     count++;
-                }
-                if (nums[j] == 0 && tracker <= k)
-                {
-                    tracker++;
-                    count++;
-                    if(tracker > k){
-                        tracker = 0;
-                        count = 0;
+                }else{
+                    if(temp > 0){
+                        count++;
+                        temp--;
+                    }else{
+                        temp = k;
                         break;
                     }
                 }
             }
-            maxOneCount = Math.max(maxOneCount, count);
+            max = Math.max(max, count);
+            count = 0;
         }
-        return maxOneCount;
+        return max;
     }
 
-    static int longestOnes_Optimized(int[] nums, int k) {
+    static int longestOnes_Optimized(int[] nums, int k)
+    {
         //this approach uses sliding window
-
-        //Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
-        //Output: 6
-        //Explanation: [1,1,1,0,0,1,1,1,1,1,1]
         int i = 0;
         int j = 0;
         while (i < nums.length) {
@@ -67,13 +58,13 @@ public class D17MaxConsecutiveOnes {
             }
             i++;
         }
-
         return i - j;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
-        int k = 2;
-        System.out.println(longestOnes_Optimized(nums, k));
+        int[] nums = {0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1};
+        int k = 3;
+//        System.out.println(longestOnes_Optimized(nums, k));
+        System.out.println(longestOnes(nums, k));
     }
 }

@@ -71,8 +71,11 @@ public class StringToInteger {
      */
 
     public static void main(String[] args) {
-        String s = "453";
-        System.out.println(myAtoi(s));
+//        String s = "453";
+//        System.out.println(myAtoi(s));
+
+        char c = '-';
+        System.out.println(c - '0');
     }
 
     public static int myAtoi(String str) {
