@@ -71,10 +71,19 @@ public class StringToInteger {
      */
 
     public static void main(String[] args) {
-
+        String s = "453";
+        System.out.println(myAtoi(s));
     }
 
     public static int myAtoi(String str) {
-        return 0;
+        int startIndex = 0;
+        int endIndex = str.length() - 1;
+        int number = 0;
+        while (endIndex >= 0){
+            number = number * 10 + str.charAt(startIndex) - '0';
+            endIndex--;
+            startIndex++;
+        }
+        return number;
     }
 }
