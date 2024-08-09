@@ -22,6 +22,9 @@ public class D17MaxConsecutiveOnes {
 
     static int longestOnes(int[] nums, int k)
     {
+        //check if array is empty
+        if(nums.length == 0) return 0;
+
         int max = Integer.MIN_VALUE;
         int count = 0;
         int temp = k;
