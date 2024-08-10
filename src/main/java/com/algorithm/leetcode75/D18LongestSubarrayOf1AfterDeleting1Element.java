@@ -25,7 +25,7 @@ public class D18LongestSubarrayOf1AfterDeleting1Element {
      */
 
     public static void main(String[] args) {
-        int[] arr = {1,1,0,1};
+        int[] arr = {0,1,1,1,0,1,1,0,1};
         System.out.println(longestSubarray(arr));
     }
 
@@ -40,7 +40,6 @@ public class D18LongestSubarrayOf1AfterDeleting1Element {
                 }else{
                     if(zero < 1){
                         zero++;
-                        continue;
                     }else{
                         break;
                     }
@@ -48,7 +47,9 @@ public class D18LongestSubarrayOf1AfterDeleting1Element {
             }
             maxOneCount = Math.max(maxOneCount, count);
             count = 0;
+            zero = 0;
         }
+
         if(maxOneCount == nums.length) return maxOneCount - 1;
         return maxOneCount;
     }
