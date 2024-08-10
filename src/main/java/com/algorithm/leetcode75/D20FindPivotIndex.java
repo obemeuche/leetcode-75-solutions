@@ -45,10 +45,10 @@ public class D20FindPivotIndex {
         int rightSum = Arrays.stream(nums).sum();
 
         for (int i = 0; i < nums.length - 1; i++) {
+            rightSum -= nums[i];
             if (leftSum == rightSum) {
                 return i;
             }
-            rightSum -= nums[i];
             leftSum += nums[i];
 
         }
