@@ -20,7 +20,8 @@ public class D19HigestAltitude {
      */
 
     public static void main(String[] args) {
-
+        int [] gain = {-4,-3,-2,-1,4,3,2};
+        System.out.println(largestAltitude(gain));
     }
 
     static int largestAltitude(int[] gain) {
