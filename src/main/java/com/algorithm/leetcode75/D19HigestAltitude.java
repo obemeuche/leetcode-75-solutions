@@ -24,6 +24,12 @@ public class D19HigestAltitude {
     }
 
     static int largestAltitude(int[] gain) {
-        return 0;
+        int maxAltitude = Integer.MIN_VALUE; int sum = 0;
+        for(int i = 0; i < gain.length; i++){
+            sum += gain[i];
+            maxAltitude = Math.max(maxAltitude, sum);
+        }
+        if(maxAltitude < 0) return 0;
+        return maxAltitude;
     }
 }
