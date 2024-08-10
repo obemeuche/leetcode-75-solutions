@@ -23,4 +23,33 @@ public class D18LongestSubarrayOf1AfterDeleting1Element {
         Output: 2
         Explanation: You must delete one element.
      */
+
+    public static void main(String[] args) {
+        int[] arr = {1,1,0,1};
+        System.out.println(longestSubarray(arr));
+    }
+
+    static int longestSubarray(int[] nums) {
+        if(nums.length == 0) return 0;
+
+        int zero = 0; int count = 0; int maxOneCount = Integer.MIN_VALUE;
+        for(int i = 0; i < nums.length; i++){
+            for(int j = i; j < nums.length; j++){
+                if(nums[j] == 1){
+                    count++;
+                }else{
+                    if(zero < 1){
+                        zero++;
+                        continue;
+                    }else{
+                        break;
+                    }
+                }
+            }
+            maxOneCount = Math.max(maxOneCount, count);
+            count = 0;
+        }
+        if(maxOneCount == nums.length) return maxOneCount - 1;
+        return maxOneCount;
+    }
 }
