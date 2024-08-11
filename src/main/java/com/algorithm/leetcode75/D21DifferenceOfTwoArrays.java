@@ -1,7 +1,9 @@
 package com.algorithm.leetcode75;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class D21DifferenceOfTwoArrays {
     /*
@@ -30,6 +32,32 @@ public class D21DifferenceOfTwoArrays {
     }
 
     public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-        return new ArrayList<>();
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        for (int i : nums1) {
+            set1.add(i);
+        }
+        for (int j : nums2) {
+            set2.add(j);
+        }
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+
+        for(Integer i : set1) {
+            if(!set2.contains(i)) {
+                list1.add(i);
+            }
+        }
+
+        for(Integer i : set2) {
+            if(!set1.contains(i)) {
+                list2.add(i);
+            }
+        }
+
+        List<List<Integer>> res = new ArrayList<>();
+        res.add(list1);
+        res.add(list2);
+        return res;
     }
 }
