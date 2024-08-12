@@ -38,4 +38,8 @@ public class D23DetermineIfTwoStringsAreClose {
     public static void main(String[] args) {
 
     }
+
+    public boolean closeStrings(String word1, String word2) {
+        return false;
+    }
 }
