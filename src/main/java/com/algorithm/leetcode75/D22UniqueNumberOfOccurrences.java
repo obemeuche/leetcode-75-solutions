@@ -1,10 +1,13 @@
 package com.algorithm.leetcode75;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class D22UniqueNumberOfOccurrences {
     /*
+        https://leetcode.com/problems/unique-number-of-occurrences/description/?envType=study-plan-v2&envId=leetcode-75
+
         Given an array of integers arr, return true if the number of occurrences of each value in
         the array is unique or false otherwise.
 
@@ -35,6 +38,11 @@ public class D22UniqueNumberOfOccurrences {
             map.put(j, map.getOrDefault(j, 0) + 1);
         }
         System.out.println(map);
+
+        HashSet<Integer> set = new HashSet<>();
+        for (int value : map.values()) {
+            if (!set.add(value)) return false;
+        }
         return true;
     }
 }
