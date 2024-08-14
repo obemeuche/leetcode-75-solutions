@@ -29,7 +29,8 @@ public class MaximumSumOfArrayAfterKNegations {
      */
 
     public static void main(String[] args) {
-        int [] nums = {-4,-2,-3}; int k = 4;
+        int[] nums = {-4, -2, -3};
+        int k = 4;
         System.out.println(largestSumAfterKNegations(nums, k));
     }
 
@@ -40,16 +41,10 @@ public class MaximumSumOfArrayAfterKNegations {
         //[-4,-3,-2] [4,-3,-2]
         //[-2,4,9,9,8]
         int i = 0;
-        while(k > 0){
-            if(nums[i] != 0){
-                nums[i] = -nums[i];
-                k--;
-                Arrays.sort(nums);
-//                if(nums[i] > nums[i + 1]) i++;
-            }else{
-                nums[i] = -nums[i];
-                k--;
-            }
+        while (k > 0) {
+            nums[i] = -nums[i];
+            k--;
+            Arrays.sort(nums);
         }
         System.out.println(Arrays.toString(nums));
         return Arrays.stream(nums).sum();
