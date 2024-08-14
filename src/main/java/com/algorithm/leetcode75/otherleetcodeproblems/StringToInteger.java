@@ -83,7 +83,8 @@ public class StringToInteger {
         int endIndex = str.length() - 1;
         int number = 0;
         while (endIndex >= 0){
-            number = number * 10 + str.charAt(startIndex) - '0';
+            int digit = str.charAt(startIndex) - '0';
+            number = number * 10 + digit;
             endIndex--;
             startIndex++;
         }
