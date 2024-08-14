@@ -31,17 +31,30 @@ public class FirstAndLastPositionOfSortedArray {
     static int[] searchRange(int[] nums, int target) {
         if (nums.length == 0) return new int[]{-1, -1};
 
-        int[] result = new int[2];
+        int fistPosition = findPosition(nums, target, true);
+        int lastPosition = findPosition(nums, target, false);
+
+        return new int[]{fistPosition, lastPosition};
+
+    }
+
+    static int findPosition(int[] nums, int target, boolean isStartIndex) {
+        int result = -1;
         int start = 0; int end = nums.length - 1;
         while(start <= end){
             int mid = (start + end) / 2;
             if(nums[mid] == target){
-                return new int[]{mid-1, mid};
+                result = mid;
+                if(isStartIndex){
+                    end = mid - 1;
+                }else {
+                    start = mid + 1;
+                }
             }else if(nums[mid] < target){
                 start = mid + 1;
             }else
                 end = mid - 1;
         }
-        return new int[]{-1, -1};
+        return result;
     }
 }
