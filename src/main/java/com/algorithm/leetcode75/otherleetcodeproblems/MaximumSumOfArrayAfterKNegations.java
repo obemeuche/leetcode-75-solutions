@@ -37,17 +37,18 @@ public class MaximumSumOfArrayAfterKNegations {
         if (nums.length == 0) return 0;
 
         Arrays.sort(nums);
-        //[-1, 0, 2, 3]
+        //[-4,-3,-2] [4,-3,-2]
+        //[-2,4,9,9,8]
         int i = 0;
         while(k > 0){
             if(nums[i] != 0){
-                nums[i] *= -1;
+                nums[i] = -nums[i];
                 k--;
-                if(nums[i] > nums[i + 1]) i++;
+                Arrays.sort(nums);
+//                if(nums[i] > nums[i + 1]) i++;
             }else{
-                nums[i] *= -1;
+                nums[i] = -nums[i];
                 k--;
-                System.out.println(nums[i]);
             }
         }
         System.out.println(Arrays.toString(nums));
