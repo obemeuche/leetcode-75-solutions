@@ -1,5 +1,6 @@
 package com.algorithm.leetcode75.dailycodingproblem;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class D2 {
@@ -15,6 +16,8 @@ public class D2 {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
+//        int[] copy = Arrays.copyOf(arr, arr.length);
+//        System.out.println("copy: " + Arrays.toString(copy));
         System.out.println(Arrays.toString(productOfArrayExceptItself(arr)));
     }
 
@@ -45,6 +48,23 @@ public class D2 {
 
 
     static int [] productOfArrayExceptItselfWithoutDivision(int[] array) {
+        int[] copy = Arrays.copyOf(array, array.length);
+//        int product = 1;
+        for (int i = 0; i < copy.length; i++) {
+            if (copy[i] == array[i]){
+                array[i] = productOfElements(copy, i);
+            }
+        }
         return array;
+    }
+
+    private static int productOfElements(int[] copy, int index) {
+        int product = 1;
+        for (int i = 0; i < copy.length; i++){
+            if (i != index){
+                product *= copy[i];
+            }
+        }
+        return product;
     }
 }
