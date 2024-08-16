@@ -16,7 +16,8 @@ public class D4 {
      */
 
     public static void main(String[] args) {
-
+        int [] nums = {1, 2, 0};
+        System.out.println(lowestPositiveInteger(nums));
     }
 
     static int lowestPositiveInteger(int[] arr) {
