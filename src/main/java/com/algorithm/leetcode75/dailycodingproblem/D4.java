@@ -1,5 +1,9 @@
 package com.algorithm.leetcode75.dailycodingproblem;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class D4 {
     /*
         This problem was asked by Stripe.
@@ -13,5 +17,20 @@ public class D4 {
 
     public static void main(String[] args) {
 
+    }
+
+    static int lowestPositiveInteger(int[] arr) {
+        if(arr == null || arr.length == 0) return -1;
+        //add all elements in a hashset to eliminate duplicates
+        Set<Integer> set = new HashSet<>();
+        for (int num : arr) {
+            if(num > 0) set.add(num);
+        }
+        //iterate 2ru the length of array + 1
+        //check where index is not found in set and return index
+        for (int i = 1; i <= arr.length; i++) {
+            if(!set.contains(i)) return i;
+        }
+        return -1;
     }
 }
