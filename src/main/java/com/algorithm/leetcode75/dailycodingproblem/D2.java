@@ -18,7 +18,8 @@ public class D2 {
         int[] arr = {1, 2, 3, 4, 5};
 //        int[] copy = Arrays.copyOf(arr, arr.length);
 //        System.out.println("copy: " + Arrays.toString(copy));
-        System.out.println(Arrays.toString(productOfArrayExceptItself(arr)));
+//        System.out.println(Arrays.toString(productOfArrayExceptItself(arr)));
+        System.out.println(Arrays.toString(productOfArrayExceptItselfWithoutDivision(arr)));
     }
 
     static int [] productOfArrayExceptItself(int[] array) {
@@ -49,7 +50,6 @@ public class D2 {
 
     static int [] productOfArrayExceptItselfWithoutDivision(int[] array) {
         int[] copy = Arrays.copyOf(array, array.length);
-//        int product = 1;
         for (int i = 0; i < copy.length; i++) {
             if (copy[i] == array[i]){
                 array[i] = productOfElements(copy, i);

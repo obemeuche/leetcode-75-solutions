@@ -53,7 +53,6 @@ public class MergeIntervals {
         }
         //add the last previous time
         merged.add(prev);
-
         return merged.toArray(new int[merged.size()][]);
     }
 }
