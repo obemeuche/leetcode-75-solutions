@@ -46,7 +46,6 @@ public class PlusOne {
             }
             digits[i] = 0;
         }
-        digits[digits.length - 1] = 0;
         digits = new int[digits.length + 1];
         digits[0] = 1;
 
