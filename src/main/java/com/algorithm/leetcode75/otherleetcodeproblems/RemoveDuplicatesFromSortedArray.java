@@ -30,11 +30,17 @@ public class RemoveDuplicatesFromSortedArray {
         It does not matter what you leave beyond the returned k (hence they are underscores).
      */
 
+    public static void main(String[] args) {
+        int[] nums = {0,0,1,1,1,2,2,3,3,4};
+        System.out.println(removeDuplicates(nums));
+    }
+
     static int removeDuplicates(int[] nums) {
         if(nums.length == 1){
             return nums[0];
         }
-
+        //0,0,1,1,1,2,2,3,3,4
+//        initiate a pointer variable called currentPosition to track the current position of the array
         int currentPosition = 1;
         for(int i = 1; i < nums.length; i++){
             if(nums[i] != nums[currentPosition - 1]){
@@ -46,8 +52,22 @@ public class RemoveDuplicatesFromSortedArray {
         return currentPosition;
     }
 
-    public static void main(String[] args) {
-        int[] nums = {0,0,1,1,1,2,2,3,3,4};
-        System.out.println(removeDuplicates(nums));
+
+    //won't pass criteria for ordering the array
+    static int removeDuplicates2(int[] nums) {
+        if(nums.length == 1) return 0;
+
+        int position = 0;
+        for(int i = 1; i < nums.length; i++){
+//0,0,1,1,1,2,2,3,3,4
+            if(nums[i] != nums[position]){
+                nums[position] = nums[i];
+            }else{
+                position++;
+            }
+
+        }
+        System.out.println(Arrays.toString(nums));
+        return position;
     }
 }
