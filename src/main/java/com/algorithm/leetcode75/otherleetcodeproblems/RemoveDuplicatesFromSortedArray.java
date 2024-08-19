@@ -40,7 +40,7 @@ public class RemoveDuplicatesFromSortedArray {
             return nums[0];
         }
         //0,0,1,1,1,2,2,3,3,4
-//        initiate a pointer variable called currentPosition to track the current position of the array
+        //initiate a pointer variable called currentPosition to track the current position of the array
         int currentPosition = 1;
         for(int i = 1; i < nums.length; i++){
             if(nums[i] != nums[currentPosition - 1]){
