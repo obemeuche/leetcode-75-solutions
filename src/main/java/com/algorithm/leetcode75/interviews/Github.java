@@ -1,5 +1,7 @@
 package com.algorithm.leetcode75.interviews;
 
+import java.util.Arrays;
+
 public class Github {
     /*
         there is a small, one way bridge that can carry a maximum weight of U units at a time,
@@ -26,7 +28,9 @@ public class Github {
         that must turn back so that the bridge will not be overloaded.
 
         For U = 9 and weight = [5, 3, 8, 1, 8, 7, 7, 6|, the function should return 4. After the 3rd, 5th, 6th
-        and 7th cars turn back, the weights of the remaining cars in line are (5, 3, 1, 6]. Notice that instead of the 5th, 6th and 7th cars, any three of the last four cars can turn back to obtain an optimal answer. The cars will then cross the bridge as follows:
+        and 7th cars turn back, the weights of the remaining cars in line are (5, 3, 1, 6]. Notice that instead of
+        the 5th, 6th and 7th cars, any three of the last four cars can turn back to obtain an optimal answer.
+        The cars will then cross the bridge as follows:
         the 1st car (weight 5) enters the bridge;
         the 2nd car (weight 3) enters the bridge, the total weight of cars on the bridge is 5 + 3 = 8;
         the 1st car (weight 5) leaves the bridge;
@@ -37,7 +41,7 @@ public class Github {
         the 4th car (weight 6) leaves the bridge.
         During this process, the total weight of cars on the bridge does not exceed 9.
 
-        For U = 7 and weight = 17, 6, 5, 2, 7, 4, 5, 4], the function should return 5. After the 1st, 2nd, 5th,
+        For U = 7 and weight = [7, 6, 5, 2, 7, 4, 5, 4], the function should return 5. After the 1st, 2nd, 5th,
         6th and 7th cars turn back, the weights of the remaining cars in line are [5, 2, 4). Notice
         that instead of the 6th and 7th cars, any two of the last three cars can turn back to obtain
         an optimal answer.
@@ -51,8 +55,8 @@ public class Github {
      */
 
     public static void main(String[] args) {
-        int U = 7;
-        int[] weights = {5, 3, 8, 1, 8, 7, 7, 6};
+        int U = 9;
+        int[] weights = {7, 6, 5, 2, 7, 4, 5, 4};
         int result = solution(U, weights);
         System.out.println("Minimum number of drivers that must turn back: " + result);
     }
@@ -61,8 +65,10 @@ public class Github {
         int currentWeight = 0;
         int driversTurnedBack = 0;
 
-//        Arrays.sort(weight);
-        //{7, 6, 5, 2, 7, 4, 5, 4}
+        Arrays.sort(weight);
+        System.out.println(Arrays.toString(weight));
+        //{5, 3, 8, 1, 8, 7, 7, 6}
+        //(5, 3, 1, 6]
         //Explanation: After the 1st, 2nd, 5th, 6th, and 7th cars turn back, the remaining cars in line are [5, 2, 4].
         int first = 0;
         for (int w : weight) {
