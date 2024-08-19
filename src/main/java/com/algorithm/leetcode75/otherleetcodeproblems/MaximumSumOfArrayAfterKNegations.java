@@ -57,13 +57,13 @@ public class MaximumSumOfArrayAfterKNegations {
         //[-4,-3,-2] //4, -3, -2
         //[-2,4,9,9,8]
         int pointer = 1;
-        int i = 0;
+        int i = 1;
         int a = 0;
         while (k > 0) {
-            nums[i] = -nums[i];
+            nums[i-1] = -nums[i-1];
             k--;
             a++;
-            if (nums[i] > nums[pointer] && pointer <= nums.length - 1) {
+            if (nums[i] < nums[pointer-1]) {
                 pointer++;
                 i++;
             }

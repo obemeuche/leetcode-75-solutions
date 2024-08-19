@@ -1,5 +1,7 @@
 package com.algorithm.leetcode75.dailycodingproblem;
 
+import java.util.Arrays;
+
 public class D3 {
     /*
         This problem was asked by Google.
@@ -17,4 +19,6 @@ public class D3 {
         node = Node('root', Node('left', Node('left.left')), Node('right'))
         assert deserialize(serialize(node)).left.left.val == 'left.left'
      */
+
 }
+
