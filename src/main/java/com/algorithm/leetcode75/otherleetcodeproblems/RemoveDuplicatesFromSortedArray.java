@@ -32,7 +32,7 @@ public class RemoveDuplicatesFromSortedArray {
 
     public static void main(String[] args) {
         int[] nums = {0,0,1,1,1,2,2,3,3,4};
-        System.out.println(removeDuplicates(nums));
+        System.out.println(removeDuplicates2(nums));
     }
 
     static int removeDuplicates(int[] nums) {
@@ -57,15 +57,14 @@ public class RemoveDuplicatesFromSortedArray {
     static int removeDuplicates2(int[] nums) {
         if(nums.length == 1) return 0;
 
-        int position = 0;
+        int first = nums[0];
+        int position = 1;
         for(int i = 1; i < nums.length; i++){
-//0,0,1,1,1,2,2,3,3,4
-            if(nums[i] != nums[position]){
+            if(nums[i] != first){
                 nums[position] = nums[i];
-            }else{
+                first = nums[i];
                 position++;
             }
-
         }
         System.out.println(Arrays.toString(nums));
         return position;
