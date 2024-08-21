@@ -48,7 +48,7 @@ public class TopKElement {
     }
 
     public static void main(String[] args) {
-        int [] nums = {5,-3,9,1,7,7,9,10,2,2,10,10,3,-1,3,7,-9,-1,3,3};
-        System.out.println(Arrays.toString(topKFrequent(nums, 3)));
+        int [] nums = {5,-3,9,1,7,7,9,10,2,2,10,10,3,-1,3,7,-9,-1,3,3}; int k = 3;
+        System.out.println(Arrays.toString(topKFrequent(nums, k)));
     }
 }
