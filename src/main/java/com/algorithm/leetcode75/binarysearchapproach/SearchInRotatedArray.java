@@ -26,63 +26,60 @@ public class SearchInRotatedArray {
      */
 
     public static void main(String[] args) {
-        int[] arr = {4,5,6,7,0,1,2}; int target = 0;
+        int[] arr = {6,7,1,2,3,4,5}; int target = 6;
+//        int[] arr = {5,1,3}; int target = 1;
+//        int[] arr = {1,3}; int target = 0;
 
         //[1,3] target = 3;
-        System.out.println(searchInRotatedArray(arr,target));
+        System.out.println(searchInRotatedArray(arr, target));
     }
 
     static int searchInRotatedArray(int[] nums, int target) {
-        int peakIndex = findPeakElement(nums);
+        int peakIndex = findPivotIndex(nums);
         //check from left position
         boolean isAsc = true;
-        int leftIndex = binarySearch(nums, target, 0, peakIndex, false);
-        if (leftIndex != -1){
+        int leftIndex = binarySearch(nums, target, 0, peakIndex);
+        if (leftIndex != -1) {
             return leftIndex;
         }
         //check from the right position
-        return binarySearch(nums, target, peakIndex + 1, nums.length - 1, true);
+        return binarySearch(nums, target, peakIndex, nums.length - 1);
     }
 
-    static int findPeakElement(int[] arr) {
-        int start = 0; int end = arr.length - 1;
+    private static int findPivotIndex(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
 
         //ans will be when start = end
-        while(start != end){
-            int mid = (start+end)/2;
-            if(arr[mid] > arr[mid+1]){
-                //you are in the decreasing part of the array
-                //look left
-                end = mid;
-            }else {
-                //you are in the increasing part of the array
-                //look right
-                start = mid+1;
+        //5,1,3-5   1,3-0
+        while (start != end) {
+            int mid = (start + end) / 2;
+            if (mid < end && arr[mid] > arr[mid + 1]) {
+                return mid;
+            }
+            if (mid > start && arr[mid] < arr[mid - 1]) {
+                return mid - 1;
+            }
+            if (arr[mid] >= arr[start]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
             }
         }
-        //start will be equal to end and pointing to the largest number
-        //start and end are always trying to find the max element in the above checks
+        System.out.println("Pivot index is: " + start);
         return start; //or end as both are equal
     }
 
-    static int binarySearch(int[] arr, int target, int start, int end, boolean isAsc) {
-        while(start <= end){
-            int mid = (start+end)/2;
-            if(arr[mid] == target){
+    private static int binarySearch(int[] arr, int target, int start, int end) {
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (arr[mid] == target) {
                 return mid;
             }
-            if(isAsc){
-                if(target > arr[mid]){
-                    start = mid+1;
-                }else{
-                    end = mid-1;
-                }
-            }else{
-                if(target < arr[mid]){
-                    start = mid+1;
-                }else{
-                    end = mid-1;
-                }
+            if (target > arr[mid]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
             }
         }
         return -1;

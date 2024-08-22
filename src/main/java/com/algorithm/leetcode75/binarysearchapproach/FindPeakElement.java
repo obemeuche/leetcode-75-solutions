@@ -27,7 +27,7 @@ public class FindPeakElement {
         System.out.println(findPeakElement(arr));
     }
 
-    static int findPeakElement(int[] arr) {
+    private static int findPeakElement(int[] arr) {
         int start = 0; int end = arr.length - 1;
 
         //ans will be when start = end
