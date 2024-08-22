@@ -27,6 +27,28 @@ public class PeakIndexInAMountainArray {
      */
 
     public static void main(String[] args) {
+        int [] arr = {0,10,5,2};
+        System.out.println(peakIndexInMountainArray(arr));
+    }
 
+    static int peakIndexInMountainArray(int[] arr) {
+        int start = 0; int end = arr.length - 1;
+
+        //ans will be when start = end
+        while(start != end){
+            int mid = (start+end)/2;
+            if(arr[mid] > arr[mid+1]){
+                //you are in the decreasing part of the array
+                //look left
+                end = mid;
+            }else {
+                //you are in the increasing part of the array
+                //look right
+                start = mid+1;
+            }
+        }
+        System.out.println("start: " + start);
+        System.out.println("end: " + end);
+        return start;
     }
 }
