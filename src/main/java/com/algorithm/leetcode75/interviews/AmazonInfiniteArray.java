@@ -4,7 +4,8 @@ public class AmazonInfiniteArray {
     // https://www.geeksforgeeks.org/find-position-element-sorted-array-infinite-numbers/
     // Find position of an element in a sorted array of infinite numbers
     public static void main(String[] args) {
-        int [] arr = {1,2,3,4,5,6,7,8,9}; int target = 5;
+        int [] arr = {3, 5, 7, 9, 10, 90,
+                100, 130, 140, 160, 170}; int target = 10;
         System.out.println(infiniteArray(arr, target));
     }
 
