@@ -47,8 +47,10 @@ public class PeakIndexInAMountainArray {
                 start = mid+1;
             }
         }
+        //start will be equal to end and pointing to the largest number
+        //start and end are always trying to find the max element in the above checks
         System.out.println("start: " + start);
         System.out.println("end: " + end);
-        return start;
+        return start; //or end as both are equal
     }
 }
