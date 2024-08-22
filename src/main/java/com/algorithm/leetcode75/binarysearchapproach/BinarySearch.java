@@ -1,4 +1,4 @@
-package com.algorithm.leetcode75.others;
+package com.algorithm.leetcode75.binarysearchapproach;
 
 public class BinarySearch {
     public static void main(String[] args) {
