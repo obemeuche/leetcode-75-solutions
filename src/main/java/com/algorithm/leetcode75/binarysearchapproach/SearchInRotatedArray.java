@@ -2,6 +2,8 @@ package com.algorithm.leetcode75.binarysearchapproach;
 
 public class SearchInRotatedArray {
     /*
+        https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/1365096746/
+
         There is an integer array nums sorted in ascending order (with distinct values).
         Prior to being passed to your function, nums is possibly rotated at an unknown
         pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k],
@@ -36,12 +38,23 @@ public class SearchInRotatedArray {
 
     static int searchInRotatedArray(int[] nums, int target) {
         int peakIndex = findPivotIndex(nums);
-        //check from left position
-        boolean isAsc = true;
-        int leftIndex = binarySearch(nums, target, 0, peakIndex);
-        if (leftIndex != -1) {
-            return leftIndex;
+        //confirm if rotated array
+        if(peakIndex == -1) {
+            return binarySearch(nums, target, 0, nums.length-1);
         }
+
+        //check if target == element at pick index
+        if(target == nums[peakIndex]) return peakIndex;
+
+        //check from left position
+        if(target >= nums[0]) {
+            return binarySearch(nums, target, 0, peakIndex-1);
+        }
+
+//        int leftIndex = binarySearch(nums, target, 0, peakIndex);
+//        if (leftIndex != -1) {
+//            return leftIndex;
+//        }
         //check from the right position
         return binarySearch(nums, target, peakIndex, nums.length - 1);
     }
@@ -67,7 +80,7 @@ public class SearchInRotatedArray {
             }
         }
         System.out.println("Pivot index is: " + start);
-        return start; //or end as both are equal
+        return -1;
     }
 
     private static int binarySearch(int[] arr, int target, int start, int end) {
