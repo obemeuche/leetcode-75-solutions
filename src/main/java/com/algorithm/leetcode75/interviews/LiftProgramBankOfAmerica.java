@@ -1,7 +1,6 @@
 package com.algorithm.leetcode75.interviews;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LiftProgramBankOfAmerica {
@@ -20,23 +19,23 @@ public class LiftProgramBankOfAmerica {
 
     public static void main(String[] args) {
         //userFloor == 1
-        //selectFloor == 3
+        //designatedFloor == 3
         //currentFloor == 2
         //output == [2,1,2,3]
 
         //userFloor == 0
-        //selectFloor == 2
+        //designatedFloor == 2
         //currentFloor == 0
         //output == [0,1,2]
 
         System.out.println(getFloors(0,0,2));
         System.out.println(getFloors(1,2,3));
 
-        System.out.println(Arrays.toString(getFloors_UsingStaticArrays(0, 0, 2)));
-        System.out.println(Arrays.toString(getFloors_UsingStaticArrays(1, 2, 3)));
+//        System.out.println(Arrays.toString(getFloors_UsingStaticArrays(0, 0, 2)));
+//        System.out.println(Arrays.toString(getFloors_UsingStaticArrays(1, 2, 3)));
     }
 
-    static List<Integer> getFloors(int userFloor, int currentFloor, int selectFloor){
+    static List<Integer> getFloors(int userFloor, int currentFloor, int designatedFloor){
         List<Integer> floors = new ArrayList<>();
 
         //check if currentFloor is not equal to the userFloor
@@ -44,47 +43,47 @@ public class LiftProgramBankOfAmerica {
             if(currentFloor > userFloor){
                 //add the currentFloor
                 floors.add(currentFloor);
-                iterate(floors,userFloor,selectFloor);
+                iterateFloors(floors,userFloor,designatedFloor);
             }else{
-                iterate(floors, currentFloor, selectFloor);
+                iterateFloors(floors, currentFloor, designatedFloor);
             }
 
         }else{
-            iterate(floors, currentFloor, selectFloor);
+            iterateFloors(floors, currentFloor, designatedFloor);
         }
         return floors;
     }
 
-    static void iterate(List<Integer> floors, int firstPosition, int secondPosition){
+    static void iterateFloors(List<Integer> floors, int firstPosition, int secondPosition){
         for(int i = firstPosition; i <= secondPosition; i++){
             floors.add(i);
         }
     }
 
-    static int [] getFloors_UsingStaticArrays(int userFloor, int currentFloor, int selectFloor){
-//        List<Integer> floors = new ArrayList<>();
-        int [] floors = new int[5];
-
-        //check if currentFloor is not equal to the userFloor
-        if(currentFloor != userFloor){
-            if(currentFloor > userFloor){
-                //add the currentFloor
-                floors[0] = currentFloor;
-//                floors.add(currentFloor);
-                iterateArray(floors,userFloor,selectFloor);
-            }else{
-                iterateArray(floors, currentFloor, selectFloor);
-            }
-
-        }else{
-            iterateArray(floors, currentFloor, selectFloor);
-        }
-        return floors;
-    }
-
-    static void iterateArray(int [] floors, int firstPosition, int secondPosition){
-        for(int i = firstPosition; i <= secondPosition; i++){
-            floors[i] = i;
-        }
-    }
+//    static int [] getFloors_UsingStaticArrays(int userFloor, int currentFloor, int selectFloor){
+////        List<Integer> floors = new ArrayList<>();
+//        int [] floors = new int[5];
+//
+//        //check if currentFloor is not equal to the userFloor
+//        if(currentFloor != userFloor){
+//            if(currentFloor > userFloor){
+//                //add the currentFloor
+//                floors[0] = currentFloor;
+////                floors.add(currentFloor);
+//                iterateArray(floors,userFloor,selectFloor);
+//            }else{
+//                iterateArray(floors, currentFloor, selectFloor);
+//            }
+//
+//        }else{
+//            iterateArray(floors, currentFloor, selectFloor);
+//        }
+//        return floors;
+//    }
+//
+//    static void iterateArray(int [] floors, int firstPosition, int secondPosition){
+//        for(int i = firstPosition; i <= secondPosition; i++){
+//            floors[i] = i;
+//        }
+//    }
 }
