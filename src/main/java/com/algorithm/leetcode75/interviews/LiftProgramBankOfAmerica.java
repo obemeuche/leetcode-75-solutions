@@ -30,9 +30,12 @@ public class LiftProgramBankOfAmerica {
         //output == [0,1,2]
 
         System.out.println(getFloors(0,4,5));
+        System.out.println(getFloors(0,0,2));
+        System.out.println(getFloors(5,5,0));
         System.out.println(getFloors(1,2,3));
         System.out.println(getFloors(4,1,3));
         System.out.println(getFloors(4,3,1));
+        System.out.println(getFloors(4,0,2));
 
     }
 
@@ -42,44 +45,48 @@ public class LiftProgramBankOfAmerica {
         //check if currentFloor is not equal to the userFloor
         if(currentFloor != userFloor){
             if(currentFloor > userFloor){
-                //move to user floor
+                //move to user floor in descending order
                 for(int i = currentFloor; i > userFloor; i--){
                     floors.add(i);
-                }
-                if(designatedFloor > userFloor){
-                    //move to ascending designated floor
-                    moveToDesignatedFloorAsc(floors,userFloor,designatedFloor);
-                }else{
-                    //move to descending designated floor
-                    for(int i = currentFloor; i > designatedFloor; i--){
-                        floors.add(i);
-                    }
                 }
             }else{
                 //userFloor == 4
                 //currentFloor == 0
-                //move to user floor
-                for(int i = userFloor; i > currentFloor; i--){
+                //move to user floor in ascending order
+                for(int i = currentFloor; i < userFloor; i++){
                     floors.add(i);
-                }
-                if(designatedFloor > currentFloor){
-                    moveToDesignatedFloorAsc(floors, currentFloor, designatedFloor);
-                }else{
-                    for(int i = currentFloor; i > designatedFloor; i--){
-                        floors.add(i);
-                    }
                 }
 
             }
+            if(designatedFloor > userFloor){
+                //move to ascending designated floor
+                moveToDesignatedFloorAsc(floors,userFloor,designatedFloor);
+            }else{
+                //move to descending designated floor
+                moveToDesignatedFloorDesc(userFloor, designatedFloor, floors);
+            }
 
         }else{
-            moveToDesignatedFloorAsc(floors, currentFloor, designatedFloor);
+            if (designatedFloor > userFloor){
+                //move to ascending designated floor
+                moveToDesignatedFloorAsc(floors, userFloor, designatedFloor);
+            }else{
+                //move to descending designated floor
+                moveToDesignatedFloorDesc(userFloor, designatedFloor, floors);
+            }
+
         }
         return floors;
     }
 
-    static void moveToDesignatedFloorAsc(List<Integer> floors, int firstPosition, int designatedFloor){
-        for(int i = firstPosition; i <= designatedFloor; i++){
+    private static void moveToDesignatedFloorDesc(int userFloor, int designatedFloor, List<Integer> floors) {
+        for(int i = userFloor; i >= designatedFloor; i--){
+            floors.add(i);
+        }
+    }
+
+    static void moveToDesignatedFloorAsc(List<Integer> floors, int userFloor, int designatedFloor){
+        for(int i = userFloor; i <= designatedFloor; i++){
             floors.add(i);
         }
     }
