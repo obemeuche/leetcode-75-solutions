@@ -5,7 +5,8 @@ import java.util.List;
 
 public class LiftProgramBankOfAmerica {
     /*
-        Lift Program I The task is to program a lift. The environment the lift
+        Lift Program I
+        The task is to program a lift. The environment the lift
         will be operating on has 5 floors. A user presses a button to choose what
         floor they want to access, then the lift should decide its own sequence of
         movement.
@@ -28,11 +29,9 @@ public class LiftProgramBankOfAmerica {
         //currentFloor == 0
         //output == [0,1,2]
 
-        System.out.println(getFloors(0,0,2));
+        System.out.println(getFloors(0,4,5));
         System.out.println(getFloors(1,2,3));
 
-//        System.out.println(Arrays.toString(getFloors_UsingStaticArrays(0, 0, 2)));
-//        System.out.println(Arrays.toString(getFloors_UsingStaticArrays(1, 2, 3)));
     }
 
     static List<Integer> getFloors(int userFloor, int currentFloor, int designatedFloor){
@@ -41,49 +40,24 @@ public class LiftProgramBankOfAmerica {
         //check if currentFloor is not equal to the userFloor
         if(currentFloor != userFloor){
             if(currentFloor > userFloor){
-                //add the currentFloor
-                floors.add(currentFloor);
-                iterateFloors(floors,userFloor,designatedFloor);
+                //move to user floor
+                for(int i = currentFloor; i >= userFloor; i--){
+                    floors.add(i);
+                }
+//                iterateFloors(floors,userFloor,designatedFloor);
             }else{
-                iterateFloors(floors, currentFloor, designatedFloor);
+                moveToDesignatedFloor(floors, currentFloor, designatedFloor);
             }
 
         }else{
-            iterateFloors(floors, currentFloor, designatedFloor);
+            moveToDesignatedFloor(floors, currentFloor, designatedFloor);
         }
         return floors;
     }
 
-    static void iterateFloors(List<Integer> floors, int firstPosition, int secondPosition){
+    static void moveToDesignatedFloor(List<Integer> floors, int firstPosition, int secondPosition){
         for(int i = firstPosition; i <= secondPosition; i++){
             floors.add(i);
         }
     }
-
-//    static int [] getFloors_UsingStaticArrays(int userFloor, int currentFloor, int selectFloor){
-////        List<Integer> floors = new ArrayList<>();
-//        int [] floors = new int[5];
-//
-//        //check if currentFloor is not equal to the userFloor
-//        if(currentFloor != userFloor){
-//            if(currentFloor > userFloor){
-//                //add the currentFloor
-//                floors[0] = currentFloor;
-////                floors.add(currentFloor);
-//                iterateArray(floors,userFloor,selectFloor);
-//            }else{
-//                iterateArray(floors, currentFloor, selectFloor);
-//            }
-//
-//        }else{
-//            iterateArray(floors, currentFloor, selectFloor);
-//        }
-//        return floors;
-//    }
-//
-//    static void iterateArray(int [] floors, int firstPosition, int secondPosition){
-//        for(int i = firstPosition; i <= secondPosition; i++){
-//            floors[i] = i;
-//        }
-//    }
 }

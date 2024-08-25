@@ -32,7 +32,7 @@ public class FindInMountainArray {
      */
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5,3,1}; int target = 3;
+        int[] arr = {1,5,2}; int target = 2;
         System.out.println(findInMountainArray(arr, target));
     }
 
@@ -43,6 +43,7 @@ public class FindInMountainArray {
         //check for target in left and right of both sides
         boolean isAsc = true;
         int leftIndex = binarySearch(nums, target, 0, peak, isAsc);
+        System.out.println("leftIndex: " + leftIndex);
         if(leftIndex != -1){
             return leftIndex;
         }
@@ -77,6 +78,7 @@ public class FindInMountainArray {
         while(start <= end){
             int mid = (start+end)/2;
             if(arr[mid] == target){
+                System.out.println("middle: " + mid);
                 return mid;
             }
             if(isAsc){
