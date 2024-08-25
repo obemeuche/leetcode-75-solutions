@@ -31,6 +31,8 @@ public class LiftProgramBankOfAmerica {
 
         System.out.println(getFloors(0,4,5));
         System.out.println(getFloors(1,2,3));
+        System.out.println(getFloors(4,1,3));
+        System.out.println(getFloors(4,3,1));
 
     }
 
@@ -41,22 +43,43 @@ public class LiftProgramBankOfAmerica {
         if(currentFloor != userFloor){
             if(currentFloor > userFloor){
                 //move to user floor
-                for(int i = currentFloor; i >= userFloor; i--){
+                for(int i = currentFloor; i > userFloor; i--){
                     floors.add(i);
                 }
-//                iterateFloors(floors,userFloor,designatedFloor);
+                if(designatedFloor > userFloor){
+                    //move to ascending designated floor
+                    moveToDesignatedFloorAsc(floors,userFloor,designatedFloor);
+                }else{
+                    //move to descending designated floor
+                    for(int i = currentFloor; i > designatedFloor; i--){
+                        floors.add(i);
+                    }
+                }
             }else{
-                moveToDesignatedFloor(floors, currentFloor, designatedFloor);
+                //userFloor == 4
+                //currentFloor == 0
+                //move to user floor
+                for(int i = userFloor; i > currentFloor; i--){
+                    floors.add(i);
+                }
+                if(designatedFloor > currentFloor){
+                    moveToDesignatedFloorAsc(floors, currentFloor, designatedFloor);
+                }else{
+                    for(int i = currentFloor; i > designatedFloor; i--){
+                        floors.add(i);
+                    }
+                }
+
             }
 
         }else{
-            moveToDesignatedFloor(floors, currentFloor, designatedFloor);
+            moveToDesignatedFloorAsc(floors, currentFloor, designatedFloor);
         }
         return floors;
     }
 
-    static void moveToDesignatedFloor(List<Integer> floors, int firstPosition, int secondPosition){
-        for(int i = firstPosition; i <= secondPosition; i++){
+    static void moveToDesignatedFloorAsc(List<Integer> floors, int firstPosition, int designatedFloor){
+        for(int i = firstPosition; i <= designatedFloor; i++){
             floors.add(i);
         }
     }
