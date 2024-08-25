@@ -43,12 +43,11 @@ public class FindInMountainArray {
         //check for target in left and right of both sides
         boolean isAsc = true;
         int leftIndex = binarySearch(nums, target, 0, peak, isAsc);
-        System.out.println("leftIndex: " + leftIndex);
         if(leftIndex != -1){
             return leftIndex;
         }
 
-        return binarySearch(nums, target, peak, nums.length - 1, isAsc);
+        return binarySearch(nums, target, peak, nums.length - 1, false);
     }
 
     static int findPeakElement(int[] arr) {
