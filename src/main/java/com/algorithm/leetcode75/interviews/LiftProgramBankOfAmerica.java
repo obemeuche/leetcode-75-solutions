@@ -50,31 +50,18 @@ public class LiftProgramBankOfAmerica {
                     floors.add(i);
                 }
             }else{
-                //userFloor == 4
-                //currentFloor == 0
                 //move to user floor in ascending order
                 for(int i = currentFloor; i < userFloor; i++){
                     floors.add(i);
                 }
-
             }
-            if(designatedFloor > userFloor){
-                //move to ascending designated floor
-                moveToDesignatedFloorAsc(floors,userFloor,designatedFloor);
-            }else{
-                //move to descending designated floor
-                moveToDesignatedFloorDesc(userFloor, designatedFloor, floors);
-            }
-
+        }
+        if(designatedFloor > userFloor){
+            //move to ascending designated floor
+            moveToDesignatedFloorAsc(floors,userFloor,designatedFloor);
         }else{
-            if (designatedFloor > userFloor){
-                //move to ascending designated floor
-                moveToDesignatedFloorAsc(floors, userFloor, designatedFloor);
-            }else{
-                //move to descending designated floor
-                moveToDesignatedFloorDesc(userFloor, designatedFloor, floors);
-            }
-
+            //move to descending designated floor
+            moveToDesignatedFloorDesc(userFloor, designatedFloor, floors);
         }
         return floors;
     }
@@ -85,7 +72,7 @@ public class LiftProgramBankOfAmerica {
         }
     }
 
-    static void moveToDesignatedFloorAsc(List<Integer> floors, int userFloor, int designatedFloor){
+    private static void moveToDesignatedFloorAsc(List<Integer> floors, int userFloor, int designatedFloor){
         for(int i = userFloor; i <= designatedFloor; i++){
             floors.add(i);
         }
