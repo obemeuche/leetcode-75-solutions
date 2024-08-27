@@ -40,6 +40,7 @@ public class SearchInRotatedArray {
         int peakIndex = findPivotIndex(nums);
         //confirm if rotated array
         if(peakIndex == -1) {
+            //not rotated! find target via normal binary search
             return binarySearch(nums, target, 0, nums.length-1);
         }
 
@@ -51,10 +52,6 @@ public class SearchInRotatedArray {
             return binarySearch(nums, target, 0, peakIndex-1);
         }
 
-//        int leftIndex = binarySearch(nums, target, 0, peakIndex);
-//        if (leftIndex != -1) {
-//            return leftIndex;
-//        }
         //check from the right position
         return binarySearch(nums, target, peakIndex, nums.length - 1);
     }
@@ -63,8 +60,6 @@ public class SearchInRotatedArray {
         int start = 0;
         int end = arr.length - 1;
 
-        //ans will be when start = end
-        //5,1,3-5   1,3-0
         while (start != end) {
             int mid = (start + end) / 2;
             if (mid < end && arr[mid] > arr[mid + 1]) {
