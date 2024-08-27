@@ -40,16 +40,18 @@ public class RotateArray {
     }
 
     private static void rotate(int[] nums, int k) {
-        int length = nums.length - 1;
+        int length = nums.length;
 
-        int [] result = Arrays.copyOf(nums, nums.length);
+        int [] result = Arrays.copyOf(nums, length);
 
+        int count = 1;
         for(int i = (k-1); i >= 0 ; i--){
-            nums[i] = result[length - i];
+            nums[i] = result[length - count];
+            count++;
         }
 
         int j = k;
-        for(int i = 0; i < (nums.length - k); i++){
+        for(int i = 0; i < (length - k); i++){
             nums[j] = result[i];
             j++;
         }
