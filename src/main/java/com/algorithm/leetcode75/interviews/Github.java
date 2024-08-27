@@ -56,8 +56,9 @@ public class Github {
 
     public static void main(String[] args) {
         int U = 9;
-        int[] weights = {7, 6, 5, 2, 7, 4, 5, 4};
-        int result = solution(U, weights);
+        int[] weights = {3, 4, 3, 1};
+//        int result = solution(U, weights);
+        int result = solution2(U, weights);
         System.out.println("Minimum number of drivers that must turn back: " + result);
     }
 
@@ -67,9 +68,6 @@ public class Github {
 
         Arrays.sort(weight);
         System.out.println(Arrays.toString(weight));
-        //{5, 3, 8, 1, 8, 7, 7, 6}
-        //(5, 3, 1, 6]
-        //Explanation: After the 1st, 2nd, 5th, 6th, and 7th cars turn back, the remaining cars in line are [5, 2, 4].
         int first = 0;
         for (int w : weight) {
             if (currentWeight + w > U) {
@@ -81,5 +79,47 @@ public class Github {
             }
         }
         return driversTurnedBack;
+    }
+
+    static int solution2(int U, int[] weight){
+
+        int leaving = 0;
+        int[] trip = new int[2];
+        int startingIndex = -1;
+
+
+        //initial first 2 weights
+        for(int i = 0; i < weight.length - 1; i++){
+            int first = weight[i];
+            int second = weight[i+1];
+            int sum = first + second;
+            if(sum <= U){
+                trip[0] = first;
+                trip[1] = 2;
+                startingIndex = i+2;
+                break;
+            }
+            leaving++;
+        }
+
+        //subsequent cars
+        for(int i = startingIndex; i < weight.length; i++){
+            int toCompare = trip[1];
+            int curr = weight[i];
+            int sum = toCompare + curr;
+            if(sum > U){
+                leaving++;
+            }else{
+                pushForward(trip,curr);
+            }
+        }
+
+        return leaving;
+    }
+
+    //trip organizer helper
+    static void pushForward(int[] arr, int next){
+        arr[0] = arr[1];
+        arr[1] = next;
     }
 }
