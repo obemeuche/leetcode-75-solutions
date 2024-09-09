@@ -7,6 +7,8 @@ import java.util.Stack;
 
 public class TalonOutdoorValidBraceSequence {
     /*
+        N/B: This is a similar question format given at Talon Outdoor Assessment.
+
         You are given a list of strings, where each string contains only the characters (), {}, and [].
         Write a function that determines if each string is a valid sequence of braces.
         A string is considered valid if:
