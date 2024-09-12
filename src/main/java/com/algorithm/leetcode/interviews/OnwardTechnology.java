@@ -29,7 +29,7 @@ public class OnwardTechnology {
     }
 
 
-    static String generateRandomNumber(){
+    private static String generateRandomNumber(){
         Random rand = new Random();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 6; i++) {
