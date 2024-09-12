@@ -19,6 +19,9 @@ public class OnwardTechnology {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please Enter The Dept: ");
         String id = sc.nextLine();
+        if (id.length() > 2){
+            id = id.substring(0, 2);
+        }
         for (int i = 0; i < 20; i++) {
             System.out.println(id.toUpperCase() + generateRandomNumber());
         }
