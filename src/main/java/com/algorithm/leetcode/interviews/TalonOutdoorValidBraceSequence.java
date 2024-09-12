@@ -19,7 +19,8 @@ public class TalonOutdoorValidBraceSequence {
      */
 
     public static void main(String[] args) {
-        List<String> input = Arrays.asList("{}[]()", "{[}]", "({[]})", "[()]", "([)]");
+        List<String> input = Arrays.asList("{}[]()", "{[}]", "({[]})");
+//        List<String> input = Arrays.asList("{}[]()", "{[}]", "({[]})", "[()]", "([)]");
         System.out.println(matchingBraces(input));
     }
 
@@ -39,7 +40,8 @@ public class TalonOutdoorValidBraceSequence {
     private static boolean isValidBraces(String brace) {
         Stack<Character> stack = new Stack<>();
 
-        for (char c : brace.toCharArray()) {
+        for (char c : brace.toCharArray())
+        {
             if (c == '{' || c == '[' || c == '(') {
                 stack.push(c);
             }else if(c == '}' && !stack.isEmpty() && stack.peek() == '{'){
