@@ -24,26 +24,13 @@ public class LongestValidParenthesis {
         Output: 0
      */
 
-    static int longestValidParentheses(String s) {
-//        int openCount = 0;
-//        int closeCount = 0;
-//
-//        for(int i = 0; i < s.length(); i++){
-//            if(s.charAt(i) == '('){
-//                openCount++;
-//            }
-//            if(s.charAt(i) == ')'){
-//                closeCount++;
-//            }
-//        }
-//        if(openCount > closeCount){
-//            return closeCount * 2;
-//        }else if(closeCount > openCount){
-//            return openCount * 2;
-//        }else {
-//            return closeCount + openCount;
-//        }
-//    }
+    public static void main(String[] args) {
+        String s = ")()())";
+        System.out.println(longestValidParentheses(s));
+        System.out.println(longestValidParentheses2(s));
+    }
+
+    private static int longestValidParentheses(String s) {
 
         Stack<Integer> stack = new Stack<>();
         stack.push(-1);
@@ -64,9 +51,22 @@ public class LongestValidParenthesis {
         return maxLength;
     }
 
-    public static void main(String[] args) {
-        String s = "(()())";
-        System.out.println(longestValidParentheses(s));
+    private static int longestValidParentheses2(String s) {
+        //String s = "(()())";
+        int count = 0;
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(s.charAt(i));
+//                System.out.println("stack: " + stack);
+                count++;
+            }else if (s.charAt(i) == ')' && !stack.isEmpty() && stack.peek() == '(') {
+                stack.pop();
+                count++;
+            }else{
+                count--;
+            }
+        }
+        return count;
     }
-
 }
