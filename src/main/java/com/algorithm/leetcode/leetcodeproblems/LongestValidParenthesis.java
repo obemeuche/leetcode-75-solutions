@@ -25,9 +25,11 @@ public class LongestValidParenthesis {
      */
 
     public static void main(String[] args) {
-        String s = ")()())";
+        String s = "(()";
+//        String s = ")()())";
+//        String s = "(()())";
         System.out.println(longestValidParentheses(s));
-        System.out.println(longestValidParentheses2(s));
+        System.out.println(longestValidParentheses_NotOptimized(s));
     }
 
     private static int longestValidParentheses(String s) {
@@ -39,11 +41,11 @@ public class LongestValidParenthesis {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
                 stack.push(i);
-            }else{
+            } else {
                 stack.pop();
-                if(stack.isEmpty()){
+                if (stack.isEmpty()) {
                     stack.push(i);
-                }else{
+                } else {
                     maxLength = Math.max(maxLength, i - stack.peek());
                 }
             }
@@ -51,20 +53,24 @@ public class LongestValidParenthesis {
         return maxLength;
     }
 
-    private static int longestValidParentheses2(String s) {
-        //String s = "(()())";
+    private static int longestValidParentheses_NotOptimized(String s) {
+
         int count = 0;
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
                 stack.push(s.charAt(i));
-//                System.out.println("stack: " + stack);
                 count++;
-            }else if (s.charAt(i) == ')' && !stack.isEmpty() && stack.peek() == '(') {
+            } else if (s.charAt(i) == ')' && !stack.isEmpty() && stack.peek() == '(') {
                 stack.pop();
                 count++;
-            }else{
-                count--;
+            } else {
+                continue;
+            }
+
+            if (s.length() - 1 == i && !stack.isEmpty() && stack.peek() == '(') {
+                int j = stack.size();
+                count = count - j;
             }
         }
         return count;
