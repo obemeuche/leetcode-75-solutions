@@ -8,13 +8,14 @@ public class SomeStreamApplications {
 
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        List<String> word = Arrays.asList("apple", "banana", "carrot", "dove", "ewi", "farm", "guava", "hurt");
+        List<String> words = Arrays.asList("hurt", "banana", "carrot", "ewi", "farm", "guava", "dove", "apple");
 
         System.out.println(sumOfEvenNumbers(list));
-        System.out.println(countString(word));
+        System.out.println(countString(words));
         System.out.println(squareOfIntegers(list));
         System.out.println(maxElement(list));
-        System.out.println(concat(word));
+        System.out.println(concat(words));
+        System.out.println(toUpperCaseAndSorting(words));
     }
 
     // 1. Find the sum of all even numbers in a list of integers.
@@ -51,5 +52,13 @@ public class SomeStreamApplications {
     // 5. Concatenate all the strings in a list into a single string.
     private static String concat(List<String> list) {
         return list.stream().collect(Collectors.joining(" "));
+    }
+
+    // 6. Convert each string to uppercase and then sort them in alphabetical order.
+    private static List<String> toUpperCaseAndSorting(List<String> words) {
+        return words.stream()
+                .map(String::toUpperCase)
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
