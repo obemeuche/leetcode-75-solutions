@@ -16,6 +16,7 @@ public class SomeStreamApplications {
         System.out.println(maxElement(list));
         System.out.println(concat(words));
         System.out.println(toUpperCaseAndSorting(words));
+        System.out.println(findAverage(list));
     }
 
     // 1. Find the sum of all even numbers in a list of integers.
@@ -60,5 +61,12 @@ public class SomeStreamApplications {
                 .map(String::toUpperCase)
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    // 7. Find the average of all the numbers in a list of doubles using Streams.
+    private static double findAverage(List<Integer> numbers) {
+        return numbers.stream()
+                .mapToDouble(Integer::doubleValue)
+                .average().getAsDouble();
     }
 }
