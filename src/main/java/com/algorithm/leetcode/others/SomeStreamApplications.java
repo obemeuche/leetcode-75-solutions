@@ -8,10 +8,13 @@ public class SomeStreamApplications {
 
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<String> word = Arrays.asList("apple", "banana", "carrot", "dove", "ewi", "farm", "guava", "hurt");
+
         System.out.println(sumOfEvenNumbers(list));
-        System.out.println(countString());
+        System.out.println(countString(word));
         System.out.println(squareOfIntegers(list));
         System.out.println(maxElement(list));
+        System.out.println(concat(word));
     }
 
     // 1. Find the sum of all even numbers in a list of integers.
@@ -25,9 +28,7 @@ public class SomeStreamApplications {
     }
 
     //  Find and print the count of strings that have length greater than 5.
-    private static int countString(){
-        List<String> list = Arrays.asList("apple", "banana", "carrot", "dove", "ewi", "farm", "guava", "hurt");
-
+    private static int countString(List<String> list){
         return (int) list.stream().
                 filter(str -> str.length() >= 5).
                 count();
@@ -47,4 +48,8 @@ public class SomeStreamApplications {
                 .max().getAsInt();
     }
 
+    // 5. Concatenate all the strings in a list into a single string.
+    private static String concat(List<String> list) {
+        return list.stream().collect(Collectors.joining(" "));
+    }
 }
