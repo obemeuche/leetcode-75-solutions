@@ -20,6 +20,7 @@ public class SomeStreamOperations {
         System.out.println(uniqueWords(words));
         System.out.println(checkEven(list));
         System.out.println(ifNumExist(list));
+        System.out.println(longestString(words));
     }
 
     // 1. Find the sum of all even numbers in a list of integers.
@@ -87,5 +88,11 @@ public class SomeStreamOperations {
     // 10. Check if a list contains a specific element using streams.
     private static boolean ifNumExist(List<Integer> numbers) {
         return numbers.stream().anyMatch(num -> num.equals(11));
+    }
+
+    // 11. Find the longest string in a list using streams.
+    private static int longestString(List<String> words) {
+        return words.stream()
+                .mapToInt(String::length).max().getAsInt();
     }
 }
