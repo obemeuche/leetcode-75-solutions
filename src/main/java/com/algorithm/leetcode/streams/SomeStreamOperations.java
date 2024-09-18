@@ -73,11 +73,9 @@ public class SomeStreamOperations {
 
     // 8. Create a new list that contains only unique words (remove duplicates)
     private static List<String> uniqueWords(List<String> words) {
-        List<String> uniqueWords;
-
-        uniqueWords = words.stream()
+        return words.stream()
                 .distinct().collect(Collectors.toList());
-
-        return uniqueWords;
     }
+
+    // 9. Check if all elements in a List satisfy a given condition using streams.
 }
