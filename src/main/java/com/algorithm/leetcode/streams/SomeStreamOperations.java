@@ -18,6 +18,7 @@ public class SomeStreamOperations {
         System.out.println(toUpperCaseAndSorting(words));
         System.out.println(findAverage(list));
         System.out.println(uniqueWords(words));
+        System.out.println(checkEven(list));
     }
 
     // 1. Find the sum of all even numbers in a list of integers.
@@ -78,4 +79,7 @@ public class SomeStreamOperations {
     }
 
     // 9. Check if all elements in a List satisfy a given condition using streams.
+    private  static boolean checkEven(List<Integer> numbers) {
+        return numbers.stream().allMatch(num -> num % 2 == 0);
+    }
 }
