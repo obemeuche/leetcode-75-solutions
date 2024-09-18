@@ -8,7 +8,7 @@ public class SomeStreamOperations {
 
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        List<String> words = Arrays.asList("hurt", "banana", "carrot", "ewi", "farm", "guava", "dove", "apple");
+        List<String> words = Arrays.asList("guava", "banana", "carrot", "apple", "farm", "guava", "dove", "apple");
 
         System.out.println(sumOfEvenNumbers(list));
         System.out.println(countString(words));
@@ -17,11 +17,12 @@ public class SomeStreamOperations {
         System.out.println(concat(words));
         System.out.println(toUpperCaseAndSorting(words));
         System.out.println(findAverage(list));
+        System.out.println(uniqueWords(words));
     }
 
     // 1. Find the sum of all even numbers in a list of integers.
     private static int sumOfEvenNumbers(List<Integer> numbers) {
-        int sum = 0;
+        int sum;
         sum = numbers.stream()
                 .filter(num -> num % 2 == 0)
                 .mapToInt(Integer::intValue)
@@ -29,7 +30,7 @@ public class SomeStreamOperations {
         return sum;
     }
 
-    //  Find and print the count of strings that have length greater than 5.
+    // 2. Find and print the count of strings that have length greater than 5.
     private static int countString(List<String> list){
         return (int) list.stream().
                 filter(str -> str.length() >= 5).
@@ -68,5 +69,15 @@ public class SomeStreamOperations {
         return numbers.stream()
                 .mapToDouble(Integer::doubleValue)
                 .average().getAsDouble();
+    }
+
+    // 8. Create a new list that contains only unique words (remove duplicates)
+    private static List<String> uniqueWords(List<String> words) {
+        List<String> uniqueWords;
+
+        uniqueWords = words.stream()
+                .distinct().collect(Collectors.toList());
+
+        return uniqueWords;
     }
 }
