@@ -1,6 +1,7 @@
 package com.algorithm.leetcode.streams;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
@@ -22,6 +23,7 @@ public class SomeStreamOperations {
         System.out.println(checkEven(list));
         System.out.println(ifNumExist(list));
         System.out.println(longestString(words));
+        System.out.println(countOfStringsThatStartWith("b", words));
     }
 
     // 1. Find the sum of all even numbers in a list of integers.
@@ -50,9 +52,13 @@ public class SomeStreamOperations {
 
     // 4. Find the maximum element in a list of integers.
     private static int maxElement(List<Integer> numbers) {
-        return numbers.stream()
-                .mapToInt(Integer::intValue)
-                .max().getAsInt();
+
+        return numbers.stream().max(Comparator.naturalOrder()).get();
+//        return numbers.stream().max(Integer::compareTo).get();
+
+//        return numbers.stream()
+//                .mapToInt(Integer::intValue)
+//                .max().getAsInt();
     }
 
     // 5. Concatenate all the strings in a list into a single string.
@@ -95,5 +101,10 @@ public class SomeStreamOperations {
     private static int longestString(List<String> words) {
         return words.stream()
                 .mapToInt(String::length).max().getAsInt();
+    }
+
+    // 12. Find and print the count of strings that start with a specific character
+    private static int countOfStringsThatStartWith(String prefix, List<String> words) {
+        return (int) words.stream().filter(word -> word.startsWith(prefix)).count();
     }
 }
