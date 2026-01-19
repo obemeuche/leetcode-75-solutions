@@ -1,10 +1,18 @@
 package com.algorithm.leetcode.streams;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.apache.logging.log4j.util.Strings;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class SomeStreamOperations {
 
@@ -24,6 +32,19 @@ public class SomeStreamOperations {
         System.out.println(ifNumExist(list));
         System.out.println(longestString(words));
         System.out.println(countOfStringsThatStartWith("b", words));
+
+        User uche = new User("uche");
+        User james = new User("james");
+        User sarah = new User("sarah");
+        User ada = new User("ada");
+
+        List<User> users = List.of(uche, james, sarah, ada);
+
+        List<String> names = users.stream()
+                .map(User::getName)
+                .toList();
+
+        System.out.println("names: " + names);
     }
 
     // 1. Find the sum of all even numbers in a list of integers.
@@ -47,7 +68,7 @@ public class SomeStreamOperations {
     private static List<Integer> squareOfIntegers(List<Integer> numbers) {
         return numbers.stream()
                 .map(num -> num * num)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     // 4. Find the maximum element in a list of integers.
@@ -71,7 +92,7 @@ public class SomeStreamOperations {
         return words.stream()
                 .map(String::toUpperCase)
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     // 7. Find the average of all the numbers in a list of doubles using Streams.
@@ -84,7 +105,7 @@ public class SomeStreamOperations {
     // 8. Create a new list that contains only unique words (remove duplicates)
     private static List<String> uniqueWords(List<String> words) {
         return words.stream()
-                .distinct().collect(Collectors.toList());
+                .distinct().collect(toList());
     }
 
     // 9. Check if all elements in a List satisfy a given condition using streams.
@@ -107,4 +128,13 @@ public class SomeStreamOperations {
     private static int countOfStringsThatStartWith(String prefix, List<String> words) {
         return (int) words.stream().filter(word -> word.startsWith(prefix)).count();
     }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class User {
+         private String name;
+    }
+
 }
